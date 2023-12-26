@@ -1,6 +1,7 @@
 #include <iostream>
-
+#include "Wifi.hpp"
 int main() {
-    std::cout << "Hello" << std::endl;
+    WIFI_Init();
+    // std::cout << "Hello" << std::endl;
     return 0;
 }
