@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(HELLOAPP)
+project(HELLOAPP VERSION 1.1)
 
 set(SRC_FILES main.cpp src/calc.cpp)
 # message(WARNING "Src File has ${SRC_FILES}")
@@ -41,3 +41,9 @@ add_executable(hellobinary ${SRC_FILES})
 target_include_directories(hellobinary PUBLIC include/ lib/)
 
 target_link_libraries(hellobinary PUBLIC wifi_lib)
+
+
+#configure file
+set(PRODUCT_YEAR "2021")
+configure_file(default_config.h.in default_config.h)
+target_include_directories(hellobinary PUBLIC ${PROJECT_BINARY_DIR})
