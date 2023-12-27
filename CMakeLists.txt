@@ -102,3 +102,15 @@ endif()
 #cache
 # option(CVar "BOOL Var" TRUE)
 set(var2 TRUE CACHE BOOL "bool variable")
+option(DEBUG "BOOL Var" 1)
+
+#compile
+target_compile_definitions(hellobinary PUBLIC "STD_CXX=20")
+target_compile_definitions(hellobinary PUBLIC -march=native)
+
+#install
+install(FILES "${PROJECT_BINARY_DIR}/hellobinary"
+        DESTINATION "${PROJECT_BINARY_DIR}/executable")
+install(FILES "${CMAKE_SOURCE_DIR}/lib/Wifi.hpp"
+                # "${CMAKE_SOURCE_DIR}/include/calc.hpp"
+        DESTINATION "${PROJECT_BINARY_DIR}/include")

@@ -6,5 +6,6 @@ int main() {
     #endif
     WIFI_Init();
     // std::cout << "Hello" << std::endl;
+    std::cout<<STD_CXX<<std::endl;
     return 0;
 }
