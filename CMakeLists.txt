@@ -1,14 +1,20 @@
 cmake_minimum_required(VERSION 3.22)
 project(HELLOAPP VERSION 1.1)
 
+#######################################################################################
+
 set(SRC_FILES main.cpp src/calc.cpp)
 # # message(WARNING "Src File has ${SRC_FILES}")
 # # message(FATAL_ERROR "Src File has ${SRC_FILES}")
 # message("CMAKE_SOURCE_DIR is ${CMAKE_SOURCE_DIR}")
 # # message("${MINGW}")
 
+#######################################################################################
+
 # message(STATUS "Src File has ${SRC_FILES}")
 # #list(APPEND CMAKE_PREFIX_PATH  /usr/share/mingw-w64)
+
+#######################################################################################
 
 # #important variables
 # message(STATUS "CMAKE_SOURCE_DIR ${CMAKE_SOURCE_DIR}")
@@ -23,8 +29,12 @@ set(SRC_FILES main.cpp src/calc.cpp)
 # MESSAGE(STATUS "show c++ standard: ${CMAKE_CXX_STANDARD}")
 # MESSAGE(STATUS "show c++ standard required: ${CMAKE_CXX_STANDARD_REQUIRED}")
 
+#######################################################################################
+
 # #rephrase: set(SRC_FILES main.cpp src/calc.cpp)
 # set (SRC_FILES "main.cpp;src/calc.cpp")
+
+#######################################################################################
 
 # #environment variable
 # set(p $ENV{PATH})
@@ -34,6 +44,7 @@ set(SRC_FILES main.cpp src/calc.cpp)
 # message(STATUS "Argument value is ${myValue}")
 # message(STATUS "CMAKE_CXX_STANDARD is ${CMAKE_CXX_STANDARD}")
 
+#######################################################################################
 
 #add child cmake in lib folder
 add_subdirectory(${CMAKE_SOURCE_DIR}/lib)
@@ -42,11 +53,14 @@ target_include_directories(hellobinary PUBLIC include/ lib/)
 
 target_link_libraries(hellobinary PUBLIC wifi_lib)
 
+#######################################################################################
 
 #configure file
 set(PRODUCT_YEAR "2021")
 configure_file(default_config.h.in default_config.h)
 target_include_directories(hellobinary PUBLIC ${PROJECT_BINARY_DIR})
+
+#######################################################################################
 
 # set(DEBUG 1)
 #if/for each
@@ -87,6 +101,7 @@ endif()
 #     math(EXPR Var1 "${Var1} - 1")
 # endwhile()
 
+#######################################################################################
 
 # #function
 # function(happynewyear arg1)
@@ -99,18 +114,99 @@ endif()
 # set(var1 2 0 2 2)
 # happynewyear(var1 jan)
 
-#cache
-# option(CVar "BOOL Var" TRUE)
-set(var2 TRUE CACHE BOOL "bool variable")
-option(DEBUG "BOOL Var" 1)
+# #cache
+# # option(CVar "BOOL Var" TRUE)
+# set(var2 TRUE CACHE BOOL "bool variable")
+# option(DEBUG "BOOL Var" 1)
 
-#compile
-target_compile_definitions(hellobinary PUBLIC "STD_CXX=20")
-target_compile_definitions(hellobinary PUBLIC -march=native)
+#######################################################################################
 
-#install
-install(FILES "${PROJECT_BINARY_DIR}/hellobinary"
-        DESTINATION "${PROJECT_BINARY_DIR}/executable")
-install(FILES "${CMAKE_SOURCE_DIR}/lib/Wifi.hpp"
-                # "${CMAKE_SOURCE_DIR}/include/calc.hpp"
-        DESTINATION "${PROJECT_BINARY_DIR}/include")
+# #compile
+# target_compile_definitions(hellobinary PUBLIC "STD_CXX=20")
+# target_compile_definitions(hellobinary PUBLIC -march=native)
+
+# #install
+# install(FILES "${PROJECT_BINARY_DIR}/hellobinary"
+#         DESTINATION "${PROJECT_BINARY_DIR}/executable")
+# install(FILES "${CMAKE_SOURCE_DIR}/lib/Wifi.hpp"
+#                 # "${CMAKE_SOURCE_DIR}/include/calc.hpp"
+#         DESTINATION "${PROJECT_BINARY_DIR}/include")
+
+#######################################################################################
+#file
+
+# file(READ "main.cpp" MAIN_Text)
+# message("${MAIN_Text}")
+# ------------------------------------------
+# file(STRINGS "main.cpp" MAIN_Text)
+# message("${MAIN_Text}")
+# ------------------------------------------
+# file(STRINGS "main.cpp" MAIN_Text REGEX "^int.")
+# message("${MAIN_Text}")
+# ------------------------------------------
+# file(GLOB_RECURSE SRCS "*.cpp")
+# message("${SRCS}")
+
+# ------------------------------------------
+# ------------------------------------------
+#string
+
+# file(READ "main.cpp" MAIN_Text)
+# STRING(REGEX REPLACE "int" "void" OUT ${MAIN_Text})
+# message("${OUT}")
+
+# ------------------------------------------
+# ------------------------------------------
+#macro
+
+# set(globalVariable 10)
+# macro(funname x)
+#     message("${x}")
+#     message("${${x}}")
+#     set(globalVariable 15)
+# endmacro()
+# # #equivalent function
+# # function(funname x)
+# #     message("${x}")
+# #     message("${${x}}")
+# #     set(globalVariable 15 PARENT_SCOPE)
+# # endfunction()
+
+# message("${globalVariable}")
+# funname(globalVariable)
+# message("${globalVariable}")
+
+# ------------------------------------------
+# ------------------------------------------
+#break, continue
+
+# while(True)
+#     message("Hello") 
+#     break()   
+# endwhile(True)
+# while(True)
+#     message("Hello") 
+#     continue()   
+# endwhile(True)
+
+# ------------------------------------------
+# ------------------------------------------
+#execute process
+execute_process(COMMAND "ls")
+
+
+#######################################################################################
+
+
+
+#######################################################################################
+
+
+
+#######################################################################################
+
+
+#######################################################################################
+
+
+#######################################################################################
