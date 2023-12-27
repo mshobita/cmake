@@ -67,14 +67,38 @@ endif()
     #if(Var1 EQUAL Var2)
     #if(TARGET wifi_lib)
 
-#foreach
-#with items
-foreach(F IN ITEMS M O A T A S E M)
-    message(STATUS ${F})
-endforeach()
+# #foreach
+# #with items
+# foreach(F IN ITEMS M O A T A S E M)
+#     message(STATUS ${F})
+# endforeach()
 
-#with lists
-set(List E L S A Y E D)
-foreach(F IN LISTS List)
-    message(STATUS ${F})
-endforeach()
+# #with lists
+# set(List E L S A Y E D)
+# foreach(F IN LISTS List)
+#     message(STATUS ${F})
+# endforeach()
+
+
+# #while
+# set(Var1 10)
+# while(Var1)
+#     message(${Var1})
+#     math(EXPR Var1 "${Var1} - 1")
+# endwhile()
+
+
+# #function
+# function(happynewyear arg1)
+#     message("Arg1 ${arg1}") #name of the variable
+#     message("Arg1 ${${arg1}}") #show values of list
+#     message("Arg1 ${ARGN}") #extra argument
+#     message("Arg1 ${ARGC}") #count
+# endfunction()
+
+# set(var1 2 0 2 2)
+# happynewyear(var1 jan)
+
+#cache
+# option(CVar "BOOL Var" TRUE)
+set(var2 TRUE CACHE BOOL "bool variable")
